@@ -49,6 +49,6 @@ jobs:
         platforms: linux/amd64
         push: true
         tags: |
-          ${{ env.REGISTRY }}/${{ env.LC_OWNER }}/${{ env.IMAGE }}:main
+          ${{ env.REGISTRY }}/${{ env.OWNER_LC }}/${{ env.IMAGE }}:main
         cache-from: type=gha
         cache-to: type=gha,mode=max
