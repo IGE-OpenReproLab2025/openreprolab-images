@@ -1,6 +1,6 @@
 FROM pangeo/pangeo-notebook:2025.01.24
 
-ENV DATA_GID=18599 \
+ENV DATA_GID=18598 \
     DATA_GROUP=openreprolab
 
 USER root
