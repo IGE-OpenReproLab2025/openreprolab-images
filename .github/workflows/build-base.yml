@@ -35,6 +35,12 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Set lower case owner name
+      run: |
+        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+      env:
+        OWNER: '${{ github.repository_owner }}'
+
     - name: Build and push Docker image
       id: build-and-push
       uses: docker/build-push-action@v6
@@ -43,6 +49,6 @@ jobs:
         platforms: linux/amd64
         push: true
         tags: |
-          ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE }}:main
+          ${{ env.REGISTRY }}/${{ env.LC_OWNER }}/${{ env.IMAGE }}:main
         cache-from: type=gha
         cache-to: type=gha,mode=max
